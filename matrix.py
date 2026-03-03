@@ -1,4 +1,5 @@
 from fraction import Fraction
+from mixedFraction import MixedFraction
 
 class Matrix:
     def __init__(self, row:int, col:int):
@@ -8,13 +9,13 @@ class Matrix:
         self.__col = col            
         # self.__isVector = False
         # self.__isSquare = False
-    def __init__(self, vector:list[int|str|float]):
+    def __init__(self, vector:list[int|str|float|Fraction|MixedFraction]):
         # I am choosing to view vectors as having one column and many rows.
         self.__matrix = [vector]
         self.__row = len(vector)
         self.__col = 1
 
-    def __init__(self, matrix:list[list[int|str|float]]):
+    def __init__(self, matrix:list[list[int|str|float|Fraction|MixedFraction]]):
         self.__matrix = [[Fraction(x) for x in row] for row in matrix]
         self.__row = len(matrix)
         self.__col = len(matrix[0])
