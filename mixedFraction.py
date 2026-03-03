@@ -1,7 +1,7 @@
 """
 Created by Jasmine Hiebert (jwetter21) in February 2026.
 
-This is the Number class, which allows support for math with mixed fractions.
+This is the MixedFractions class, which allows support for math with mixed fractions.
 This performs similar functionality to the Function class, but was created partly 
 as a learning experience and partly to be able to deal with mixed numbers in 
 addition to fractions.
@@ -10,7 +10,7 @@ addition to fractions.
 
 from fractions import Fraction
 
-class Number(Fraction):
+class MixedFraction(Fraction):
     # The code for this function was created partially with help and debuggin from ChatGPT on 3-2-2026.
     def __new__(cls, value):
         # If it's already numeric, let Fraction handle it
@@ -48,6 +48,8 @@ class Number(Fraction):
 
         raise TypeError("Unsupported type for Number")
 
+
+# FIXME: Remove commented out code
 # from fractions import Fraction
 
 # class Number(Fraction):
