@@ -12,6 +12,7 @@ class Matrix:
         # self.__isSquare = False
     def __init__(self, vector:list[int|str|float|Fraction|MixedFraction]):
         # I am choosing to view vectors as having one column and many rows.
+        # FIXME: This isn't quite right
         self.__matrix = [vector]
         self.__row = len(vector)
         self.__col = 1
@@ -21,19 +22,30 @@ class Matrix:
         self.__row = len(matrix)
         self.__col = len(matrix[0])
 
-    def col(self):
-        pass
-    def row(self):
-        pass
+    def get_col(self):
+        return self.__col
+
+    def get_row(self):
+        return self.__row
+    
     def dot(self, other):
         pass
+
     def cross(self, other):
         pass
+
+    def is_square(self):
+        return self.__row == self.__col
+    
+    def is_vector(self):
+        pass
+
     # def resize(self, row, col):
     #     I might choose not to allow resizing
     #     pass
-    def reset(self, matrix:list[list[int]]):
-        pass
+    # def reset(self, matrix:list[list[int]]):
+    #     pass
+
     def __add__(self, other):
         m1, n1 = self.get_dimension()
         m2, n2 = other.get_dimension()
