@@ -33,9 +33,17 @@ class Matrix:
     #     pass
     def reset(self, matrix:list[list[int]]):
         pass
-    def add(self, other):
+    def __add__(self, other):
         pass
     def mult(self, other):
         pass
     def get_matrix(self):
         return self.__matrix
+    def __getitem__(self, key):
+        # Returns a row of the matrix
+        return self.__matrix[key]
+    def __setitem__(self, key):
+        pass
+    def setcell(self, row, col, new_val):
+        self.__matrix[row][col] = new_val
+        return new_val
