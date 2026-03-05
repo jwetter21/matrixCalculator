@@ -1,5 +1,6 @@
 from fraction import Fraction
 from mixedFraction import MixedFraction
+import numpy as np
 
 class Matrix:
     def __init__(self, row:int, col:int):
@@ -34,16 +35,43 @@ class Matrix:
     def reset(self, matrix:list[list[int]]):
         pass
     def __add__(self, other):
-        pass
+        m1, n1 = self.get_dimension()
+        m2, n2 = other.get_dimension()
+
+        if (m1 != m2) or (n1 != n2):
+            pass #FIXME should throw error
+
+        output = Matrix(m1, n1)
+
+        for i in range(m1):
+            r1 = self[i]
+            r2 = other[i]
+            new_row = np.add(r1, r2)
+            output[i] = new_row
+        
+        return output
+
+
+
     def mult(self, other):
         pass
+
     def get_matrix(self):
         return self.__matrix
+    
     def __getitem__(self, key):
         # Returns a row of the matrix
         return self.__matrix[key]
-    def __setitem__(self, key):
-        pass
+    
+    def __setitem__(self, key, value:list[int|str|float|Fraction|MixedFraction]):
+        if len(value) != self.__col:
+            pass # FIXME: raise error
+
+        self.__matrix[key] = value
+        return value
+
     def setcell(self, row, col, new_val):
         self.__matrix[row][col] = new_val
         return new_val
+    def get_dimension(self):
+        return (self.__row, self.__col)
