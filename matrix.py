@@ -15,13 +15,13 @@ class Matrix:
         # I am choosing to view vectors as having one column and many rows.
         matrix = []
         for r in vector:
-            matrix.append([r])
+            matrix.append([MixedFraction(r)])
         self.__matrix = matrix
         self.__row = len(vector)
         self.__col = 1
 
     def __init__(self, matrix:list[list[int|str|float|Fraction|MixedFraction]]):
-        self.__matrix = [[Fraction(x) for x in row] for row in matrix]
+        self.__matrix = [[MixedFraction(x) for x in row] for row in matrix]
         self.__row = len(matrix)
         self.__col = len(matrix[0])
 
