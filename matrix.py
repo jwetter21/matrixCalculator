@@ -5,6 +5,7 @@ import numpy as np
 class Matrix:
     def __init__(self, row:int, col:int):
         # Instantiate 
+        # I thought about implementing this one to create a unit matrix, but decided not to as it wouldn't work for non-square matrices
         self.__matrix = [[0]*row]*col
         self.__row = row
         self.__col = col            
@@ -12,8 +13,10 @@ class Matrix:
         # self.__isSquare = False
     def __init__(self, vector:list[int|str|float|Fraction|MixedFraction]):
         # I am choosing to view vectors as having one column and many rows.
-        # FIXME: This isn't quite right
-        self.__matrix = [vector]
+        matrix = []
+        for r in vector:
+            matrix.append([r])
+        self.__matrix = matrix
         self.__row = len(vector)
         self.__col = 1
 
@@ -32,7 +35,15 @@ class Matrix:
         pass
 
     def cross(self, other):
-        pass
+        # FIXME: should throw error if m1 != n2 or m2 != n1
+        for n in range(self.get_col()):
+            row1 = self[n]
+            for m in range(self.get_row()):
+                new_row = []
+                pass
+
+
+
 
     def is_square(self):
         return self.__row == self.__col
@@ -73,6 +84,7 @@ class Matrix:
     
     def __getitem__(self, key):
         # Returns a row of the matrix
+        # FIXME: possibly change how get works with double indexing [][]
         return self.__matrix[key]
     
     def __setitem__(self, key, value:list[int|str|float|Fraction|MixedFraction]):
