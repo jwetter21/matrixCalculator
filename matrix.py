@@ -6,7 +6,7 @@ class Matrix:
     def __init__(self, row:int, col:int):
         # Instantiate 
         # I thought about implementing this one to create a unit matrix, but decided not to as it wouldn't work for non-square matrices
-        self.__matrix = [[0]*row]*col
+        self.__matrix = [[0]*row for _ in range(col)] # Added this with suggestion from ChatGPT
         self.__row = row
         self.__col = col            
         # self.__isVector = False
@@ -34,13 +34,20 @@ class Matrix:
     def dot(self, other):
         pass
 
-    def cross(self, other):
+    def cross(self, other: Matrix) -> Matrix:
         # FIXME: should throw error if m1 != n2 or m2 != n1
-        for n in range(self.get_col()):
-            row1 = self[n]
+        # This should instantiate a matrix with proper dimensions
+        output_list = [[]*self.get_col() for _ in range(other.get_row())]
+        for n in range(other.get_col()):
+            col2 = other.col(n)
             for m in range(self.get_row()):
-                new_row = []
-                pass
+                row1 = self[m]
+                new_entry = 0
+                for i in range(len(row1)): # length of row1 should equal length of col2
+                    new_entry += row1[i] * col2[i]
+                # FIXME: HERE need to add code so it puts the new entry in the matrix
+        # return matrix object
+                
 
 
     def col(self, key):
