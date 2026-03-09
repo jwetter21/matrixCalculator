@@ -43,7 +43,11 @@ class Matrix:
                 pass
 
 
-
+    def col(self, key):
+        col_return = []
+        for r in self.get_row():
+            col_return.append(r[key])
+        return col_return
 
     def is_square(self):
         return self.__row == self.__col
@@ -73,8 +77,6 @@ class Matrix:
             output[i] = new_row
         
         return output
-
-
 
     def mult(self, other):
         pass
